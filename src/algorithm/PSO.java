@@ -106,9 +106,9 @@ public class PSO {
 			for(int j = 0; j < Parameters.DIMENSION; j++){
 				newPosition[j] = swarm[i].getCurrentPosition()[j] + swarm[i].getVelocity()[j];
 				if(newPosition[j] >= function.getUpperBound()){
-					newPosition[j] = (function.getUpperBound() - swarm[i].getVelocity()[j]*this.random.nextDouble()); 
+					newPosition[j] = (function.getUpperBound() - swarm[i].getVelocity()[j]*this.random.nextDouble()*boundPosition); 
 				}else if(newPosition[j] < function.getLowerBound()){
-					newPosition[j] = (function.getLowerBound() - swarm[i].getVelocity()[j]*this.random.nextDouble()); 
+					newPosition[j] = (function.getLowerBound() - swarm[i].getVelocity()[j]*this.random.nextDouble()*boundPosition); 
 				}
 			}
 			swarm[i].setCurrentPosition(newPosition);
@@ -120,16 +120,17 @@ public class PSO {
 		
 		for (int i = 1; i < swarm.length; i++) {
 	
-			if(function.calculateFitness(swarm[i].getBestPosition()) > function.calculateFitness(inicial)){
+			if(function.calculateFitness(swarm[i].getBestPosition()) < function.calculateFitness(inicial)){
 				
 				inicial =  swarm[i].getBestPosition();
 
 			}
 	}
+		if(function.calculateFitness(inicial) < function.calculateFitness(globalBestPositions));
 	}
 		
 	public void updatePBest(Particle p){
-		if(function.calculateFitness(p.getCurrentPosition()) > function.calculateFitness(p.getBestPosition())){
+		if(function.calculateFitness(p.getCurrentPosition()) < function.calculateFitness(p.getBestPosition())){
 			p.setBestPosition(p.getCurrentPosition());
 		}
 	}

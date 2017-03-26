@@ -16,7 +16,7 @@ public class Focal extends Topology{
 		
 		for(int i = 1;i < pso.getSwarm().length; i++){
 			currentParticleFitness = pso.getSwarm()[i].getBestFitness();
-			if(currentParticleFitness > bestParticle){
+			if(currentParticleFitness < bestParticle){
 				pso.getSwarm()[indiceFocal].setBestFitness(currentParticleFitness);
 				pso.setGlobalBestFitness(currentParticleFitness);
 			}

@@ -6,7 +6,7 @@ public class Sphere extends Function{
 	@Override
 	public double getLowerBound() {
 		// TODO Auto-generated method stub
-		return 0;
+		return -100;
 	}
 
 	@Override

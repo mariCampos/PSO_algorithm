@@ -12,7 +12,7 @@ public class Global extends Topology{
 		
 		for(int i = 0; i < pso.getSwarm().length; i++){
 			currentFitness = pso.getGlobalBestFitness();
-			if(bestParticle > currentFitness){
+			if(bestParticle < currentFitness){
 				indiceBestParticle = i;
 				bestParticle = currentFitness;
 			}

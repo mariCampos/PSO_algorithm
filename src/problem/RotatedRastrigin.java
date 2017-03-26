@@ -19,7 +19,7 @@ public class RotatedRastrigin extends Function{
 	@Override
 	public double calculateFitness(double[] positions) {
 		// TODO Auto-generated method stub
-		double sum = 0;
+		double sum = 0.0;
 		
 		for(int i = 0; i < Parameters.DIMENSION; i++){
 			sum = sum + (Math.pow(positions[i], 2) - 10*(Math.cos(2*Math.PI*positions[i])) + 10);
