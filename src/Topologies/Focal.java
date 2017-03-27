@@ -21,7 +21,7 @@ public class Focal extends Topology{
 				pso.setGlobalBestFitness(currentParticleFitness);
 			}
 		}
-		return null;
+		return focal;
 	}
 
 

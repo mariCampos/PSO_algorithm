@@ -9,6 +9,10 @@ public class Parameters {
 	public static final double C2 = 2.05;
 	
 	public static final double w = 0.8;
-	public static final double FATORCONSTRIÇÃO = 1;
+	public static final double W_INI = 0.9;
+	public static final double W_FINAL = 0.4;
+	
+	
+	public static final double VELOCITY_CLAPING = 0.5;
 	
 }

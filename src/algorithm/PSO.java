@@ -84,7 +84,7 @@ public class PSO {
 				
 				personal[i][j] = Parameters.C1*r1*(this.swarm[i].getBestPosition()[j] - this.swarm[i].getCurrentPosition()[j]);
 				
-				global[i][j] = Parameters.C2*r2*(this.swarm[i].getBestPosition()[j] - this.swarm[i].getCurrentPosition()[j]);
+				global[i][j] = Parameters.C2*r2*(this.globalBestPositions[j] - this.swarm[i].getCurrentPosition()[j]);
 				
 				velocity[j] = Parameters.w*swarm[i].getVelocity()[j] + personal[i][j] + global[i][j];
 				
@@ -95,7 +95,7 @@ public class PSO {
 					velocity[j] = -maxVel;
 				}
 			}
-			this.swarm[i].setVelocity(velocity);
+			this.swarm[i].setVelocity(velocity.clone());
 		}
 	}
 	
@@ -111,7 +111,8 @@ public class PSO {
 					newPosition[j] = (function.getLowerBound() - swarm[i].getVelocity()[j]*this.random.nextDouble()*boundPosition); 
 				}
 			}
-			swarm[i].setCurrentPosition(newPosition);
+			swarm[i].setCurrentPosition(newPosition.clone());
+			updatePBest(swarm[i]);
 		}
 	}
 	
@@ -131,7 +132,7 @@ public class PSO {
 		
 	public void updatePBest(Particle p){
 		if(function.calculateFitness(p.getCurrentPosition()) < function.calculateFitness(p.getBestPosition())){
-			p.setBestPosition(p.getCurrentPosition());
+			p.setBestPosition(p.getCurrentPosition().clone());
 		}
 	}
 	
