@@ -13,6 +13,7 @@ public class PSO {
 	private double globalBestFitness;
 	private Function function;
 	private Topology topologia;
+	private double w;
 	
 	public PSO(Function f, Topology t){
 		this.random = new Random();
@@ -127,7 +128,9 @@ public class PSO {
 
 			}
 	}
-		if(function.calculateFitness(inicial) < function.calculateFitness(globalBestPositions));
+		if(function.calculateFitness(inicial) < function.calculateFitness(globalBestPositions)){
+			this.globalBestPositions = inicial.clone();
+		}
 	}
 		
 	public void updatePBest(Particle p){
@@ -137,7 +140,7 @@ public class PSO {
 	}
 	
 	public void updateParameters(){
-		
+		w = w - (Parameters.W_INI - Parameters.W_FINAL)/Parameters.ITERAOES;
 	}
 
 	public Particle[] getSwarm() {

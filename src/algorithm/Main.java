@@ -9,8 +9,8 @@ public class Main {
 		//Function f = new Sphere();
 		Function f = new RotatedRastrigin();
 		//Function f = new Rosenbrock();
-		//Topology t = new Global();
-		Topology t = new Local();
+		Topology t = new Global();
+		//Topology t = new Local();
 		//Topology t = new Focal();
 		
 		PSO enxame = new PSO(f, t);
